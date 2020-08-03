@@ -1,0 +1,71 @@
+ <%= render '/header' %>
+  	<div class='body'>
+      <div class='container'>
+
+      <p id="notice">
+      <%=  notice %> 
+      </p>
+
+
+      	<div class='row'>
+  <!-- ここから -->
+  <%= render '/left' ,user: @user, users: @users, book: @book%>
+<!-- ここまで -->
+  <div class='col-xs-9'>
+    <h2>Books</h2>
+
+    <table class='table table-hover table-inverse'>
+  <thead>
+    <tr> 
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @books.each do |book| %> 
+    <tr>
+      <% if book.user.profile_image_id.nil? %>
+      <td>
+        <%= link_to user_path(book.user) do %>
+        <%= image_tag "noimage_person_c.png" ,:size => "30x30" %>
+        <% end %>
+      </td>
+
+      <% else %>
+      <td>
+        <%= link_to user_path(book.user) do %>
+        <%= attachment_image_tag book.user , :profile_image, :size => '30x30' %>
+        <% end %>
+      </td>
+      <% end %>
+      <td><%= link_to book.title , book_path(book), class:"book_#{book.id}" %></td>
+      <td><%= book.body %></td>
+    </tr>
+  <% end %>
+      <!-- <tr>
+        <td><a href="/users/12056">
+          <img class="attachment user profile_image fallback" src="/assets/no-image-icon-d3f9e11cb2bb284b42e0810f94b03c50126f51f482ea43054b87c2b7ebaa01d5.jpg" alt="No image icon" />
+</a>        </td>
+        <td><a class="book_19738" href="/books/19738">44444</a></td>
+        <td>44443</td>
+      </tr> -->
+
+  </tbody>
+</table>
+  </div>
+</div>
+      </div>
+    </div>
+
+    <footer>
+  <div class='container'>
+  	<div class='row'>
+    	<div class='col-xs-3 col-xs-offset-9'>
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>

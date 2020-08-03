@@ -1,0 +1,70 @@
+  <%= render '/header'%>
+
+  	<div class='body'>
+      <div class='container'>
+
+        <p id="notice"></p>
+
+
+      	<div class='row'>
+	<div class='col-md-6 col-md-offset-3'>
+		<h1>Editing Book</h1>
+  <!-- <div class='col-md-3 col-md-offset-3'>
+  </div> -->
+    
+  <!-- ここから変える -->
+  <%= form_for(@book, url:"/books/#{@book.id}", class:"books_edit_form") do |f| %>
+    <% @book.errors.full_messages.each do |message| %>
+    <%= message %>
+    <% end %>
+    <div class="field row">
+    <h4>Title</h4>
+    <%= f.text_field :title ,class:"col-xs-12 book_title" %>
+    </div>
+    <div class="field row">
+    <h4>Opinion</h4>
+    <%= f.text_area :body,class:"col-xs-12 book_body" %>
+    </div>
+    <div class="actions row">
+    <%= f.submit 'Update Book' ,class:"btn btn-primary col-xs-12"%>    
+    </div>
+  <% end %> 
+
+		<!-- <form class="edit_book" id="edit_book_19866" action="/books/19866" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="_method" value="patch" /><input type="hidden" name="authenticity_token" value="oJgs+KgmzAYcwN07RqL4VNWvrEmc1k6LRP7kMvYqCaQUpuUsytyTMPt2nEZx5R/LDwi7ruVE+hLRPj0ZF1MQ2Q==" />
+  <div class="field row">
+    <label for="book_title">Title</label>
+    <input class="col-xs-12 book_title" type="text" value="teset" name="book[title]" id="book_title" />
+  </div>
+
+  <div class="field row">
+    <label for="book_opinion">Opinion</label>
+    <textarea class="col-xs-12 book_body" name="book[body]" id="book_body">
+dawfg</textarea>
+  </div>
+
+  <div class="actions row">
+    <input type="submit" name="commit" value="Update Book" class="btn btn-primary col-xs-12" data-disable-with="Update Book" />
+  </div>
+</form> -->
+<%= link_to "Show" , book_path(@book.id) %>
+<%= link_to "Back" , books_path %>
+
+		<!-- <a class="book_19866" href="/books/19866">Show</a> |
+    <a class="back" href="/books">Back</a> -->
+  </div>
+  <!-- ここまで変える -->
+    <div class='col-md-3'></div>
+</div>
+      </div>
+    </div>
+
+
+    <footer>
+  <div class='container'>
+  	<div class='row'>
+    	<div class='col-xs-3 col-xs-offset-9'>
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+    </div>
+  </div>
+</footer>
